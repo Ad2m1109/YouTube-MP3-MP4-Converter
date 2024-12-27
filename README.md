@@ -71,3 +71,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 👨‍💻 Developer
 
 - [@Ad2m1109](https://github.com/Ad2m1109)
+
+## 📸 Application Interface
+
+Here is a screenshot of the application interface:
+
+![Interface Screenshot](images/interface.png)
