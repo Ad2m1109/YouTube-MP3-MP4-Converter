@@ -23,6 +23,7 @@ A simple and elegant desktop application to download YouTube videos in MP4 or MP
 - Video quality selection (144p to 1080p)
 - Real-time progress bar
 - User-friendly interface
+- **Select your own download folder**: Users can now choose where to save downloaded files.
 
 ## 📋 Prerequisites
 
@@ -42,17 +43,13 @@ cd convertisseur_MP3_MP4
 pip install -r requirements.txt
 ```
 
-## 💻 Usage
+## 📦 Usage Instructions
 
-1. Launch the application:
-```bash
-python main.py
-```
-
-2. Paste the YouTube URL in the input field
-3. Choose the format (MP4 Video or MP3 Audio)
-4. Select video quality for videos
-5. Click "Download"
+1. Enter the YouTube URL in the provided field.
+2. Select the desired format (MP3 or MP4).
+3. Choose the quality of the download.
+4. Click on "Select Download Folder" to choose where to save the downloaded files.
+5. Click the "Download" button to start the download process.
 
 Files will be saved in the "downloads" folder.
 
