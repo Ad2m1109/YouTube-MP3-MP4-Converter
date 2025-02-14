@@ -13,6 +13,7 @@ class App(ctk.CTk):
         # Window configuration
         self.title("YouTube MP3/MP4 Converter")
         self.geometry("800x600")
+
         # Theme configuration
         ctk.set_appearance_mode("dark")
         ctk.set_default_color_theme("blue")
@@ -130,28 +131,26 @@ class App(ctk.CTk):
         self.after(100, self.process_queue)  # Schedule next check
 
     def download_with_ytdlp(self, url):
-        output_template = os.path.join(self.download_folder, "%(title)s.%(ext)s")  
+        """Download the video or audio from the provided URL using yt-dlp."""
+        output_template = os.path.join(self.download_folder, "%(title)s.%(ext)s")  # Use selected download folder
 
         if self.format_var.get() == "video":
-            quality = self.quality_var.get().rstrip("p")  
-            format_spec = f"bestvideo[height<={quality}]+bestaudio/best"
+            quality = self.quality_var.get()[:-1]  # Remove 'p' from '720p'
+            format_spec = f"best[height<={quality}][ext=mp4]/best[ext=mp4]"
         else:
             format_spec = "bestaudio/best"
-            output_template = os.path.join(self.download_folder, "%(title)s.mp3")  
+            output_template = os.path.join(self.download_folder, "%(title)s.mp3")  # Ensure output is .mp3
 
-        ffmpeg_path = r"C:\ffmpeg\bin\ffmpeg.exe"  # Update this path
+        ffmpeg_path = os.getenv("FFMPEG_PATH", r"C:\\path\\to\\ffmpeg\\bin")
 
         ydl_opts = {
             "format": format_spec,
             "progress_hooks": [self.progress_hook],
             "outtmpl": output_template,
-            "quiet": False,
-            "http_headers": {
-                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.71 Safari/537.36",
-                "Accept-Language": "en-US,en;q=0.9"
-            },
-            "ffmpeg_location": ffmpeg_path,  # Ensure this is correct
-            "cookiefile": "cookies.txt",
+            "quiet": True,
+            "no_warnings": True,
+            "ffmpeg_location": ffmpeg_path,
+            "cookiefile": "cookies.txt",  # Path to your cookies file
             "postprocessors": [{
                 "key": "FFmpegExtractAudio",
                 "preferredcodec": "mp3",
