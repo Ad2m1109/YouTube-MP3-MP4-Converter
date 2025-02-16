@@ -43,6 +43,8 @@ cd convertisseur_MP3_MP4
 pip install -r requirements.txt
 ```
 
+3. Ensure `ffmpeg` is installed and available in your system's PATH. You can download it from [FFmpeg](https://ffmpeg.org/download.html).
+
 ## 📦 Usage Instructions
 
 1. Enter the YouTube URL in the provided field.
@@ -51,7 +53,7 @@ pip install -r requirements.txt
 4. Click on "Select Download Folder" to choose where to save the downloaded files.
 5. Click the "Download" button to start the download process.
 
-Files will be saved in the "downloads" folder.
+Files will be saved in the selected download folder.
 
 ## 📁 Project Structure
 
@@ -59,9 +61,11 @@ Files will be saved in the "downloads" folder.
 convertisseur_MP3_MP4/
 ├── main.py              # Main program
 ├── requirements.txt     # Python dependencies
-├── install_ffmpeg.py    # ffmpeg installation script
-├── README.md           # Documentation
-└── LICENSE             # MIT License
+├── YouTubeConverter.spec # PyInstaller spec file
+├── README.md            # Documentation
+├── LICENSE              # MIT License
+└── images/              # Directory for images and icons
+    └── icon.ico         # Application icon
 ```
 
 ## 📝 License
